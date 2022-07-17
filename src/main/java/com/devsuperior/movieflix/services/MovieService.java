@@ -1,5 +1,6 @@
 package com.devsuperior.movieflix.services;
 
+import com.devsuperior.movieflix.dto.MovieByGenreDTO;
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.entities.Movie;
@@ -30,11 +31,11 @@ public class MovieService {
         this.userRepository = userRepository;
     }
 
-    public Page<MovieDTO> findByGenre(Long genreId, Pageable pageable) {
+    public Page<MovieByGenreDTO> findByGenre(Long genreId, Pageable pageable) {
         if(genreId == 0L) {
-            return movieRepository.findAllByOrderByTitle(pageable).map(MovieDTO::new);
+            return movieRepository.findAllByOrderByTitle(pageable).map(MovieByGenreDTO::new);
         }
-        return movieRepository.findByGenreIdOrderByTitle(genreId, pageable).map(MovieDTO::new);
+        return movieRepository.findByGenreIdOrderByTitle(genreId, pageable).map(MovieByGenreDTO::new);
     }
 
     public MovieDTO findById(Long movieId) {

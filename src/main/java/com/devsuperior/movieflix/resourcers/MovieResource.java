@@ -1,5 +1,6 @@
 package com.devsuperior.movieflix.resourcers;
 
+import com.devsuperior.movieflix.dto.MovieByGenreDTO;
 import com.devsuperior.movieflix.dto.MovieDTO;
 import com.devsuperior.movieflix.dto.ReviewDTO;
 import com.devsuperior.movieflix.services.MovieService;
@@ -21,7 +22,7 @@ public class MovieResource {
     }
 
     @GetMapping
-    public ResponseEntity<Page<MovieDTO>> findByGenre(
+    public ResponseEntity<Page<MovieByGenreDTO>> findByGenre(
             @RequestParam(value = "genreId", defaultValue = "0") Long genreId, Pageable pageable) {
         return ResponseEntity.ok().body(movieService.findByGenre(genreId, pageable));
     }
