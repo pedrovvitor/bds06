@@ -21,7 +21,8 @@ public class MovieResource {
     }
 
     @GetMapping
-    public ResponseEntity<Page<MovieDTO>> findByGenre(@RequestParam Long genreId, Pageable pageable) {
+    public ResponseEntity<Page<MovieDTO>> findByGenre(
+            @RequestParam(value = "genreId", defaultValue = "0") Long genreId, Pageable pageable) {
         return ResponseEntity.ok().body(movieService.findByGenre(genreId, pageable));
     }
 

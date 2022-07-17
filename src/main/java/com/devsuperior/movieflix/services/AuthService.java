@@ -19,6 +19,6 @@ public class AuthService {
     @Transactional(readOnly = true)
     public User authenticated() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        return userRepository.findByEmail(username).orElseThrow(() ->new UnauthorizedException("Invalid user"));
+        return userRepository.findByEmail(username).orElseThrow(() -> new UnauthorizedException("Invalid user"));
     }
 }
